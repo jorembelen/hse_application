@@ -6,6 +6,7 @@ use App\Http\Livewire\Admin\CreateInvestigationReport;
 use App\Http\Livewire\Admin\EmployeesComponent;
 use App\Http\Livewire\Admin\LocationsComponent;
 use App\Http\Livewire\Admin\UsersComponent;
+use App\Http\Livewire\Admin\UserSessionsList;
 use App\Http\Livewire\Incident\IncidentNotifications;
 use App\Http\Livewire\Incident\IncidentDetails;
 use App\Http\Livewire\Incident\IncidentEdit;
@@ -69,6 +70,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('admin-locations', LocationsComponent::class)->name('admin.locations');
     Route::get('admin-employees', EmployeesComponent::class)->name('admin.employees');
     Route::get('admin-users', UsersComponent::class)->name('admin.users');
+    Route::get('admin-users-session', UserSessionsList::class)->name('admin.users-session');
 
     Route::get('edit/{incident}/incident-notification', IncidentEdit::class)->name('edit.incident');
 

@@ -25,3 +25,8 @@
                     <i class="align-middle" data-feather="feather"></i> <span class="align-middle">Reviews</span>
                 </a>
             </li>
+            <li class="sidebar-item {{ (request()->segment(1) == 'admin-users-session') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('admin.users-session') }}">
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users Session</span>
+                </a>
+            </li>

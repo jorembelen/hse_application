@@ -36,13 +36,6 @@
                                 <td>{{ $report->manager->badge }} - {{ $report->manager->name }} ({{ $report->manager->designation }})</td>
                                 <td>{{ $report->inc_loc }}</td>
                                 <td class="text-center">
-                                    {{-- @if(auth()->user()->role == 'user' || auth()->user()->role == 'super_admin' || auth()->user()->role == 'admin')
-                                    <a href="{{ route('investigation.edit', $report->id) }}"><i class="fa fa-edit"></i></a>
-                                    @endif
-                                    <a href="{{ route('investigation.info', $report->id) }}"><i class="fa fa-eye"></i></a>
-                                    <a target="_blank" class="dropdown-item" href="{{ route('print.report', $report->id) }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer action-print" data-toggle="tooltip" data-placement="top" data-original-title="Print"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-                                    </a> --}}
                                     <div class="dropdown custom-dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         </a>
