@@ -53,12 +53,12 @@ trait IncidentTraits {
                 $originalPath = 'files/image/';
                 $name = $file->hashName();
                 $ImageUpload->stream();
-                Storage::disk('local')->put($originalPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($originalPath .$name, $ImageUpload->__toString());
 
                 // for saving thumnail image
                 $thumbnailPath = 'files/thumbnail/';
                 $ImageUpload->resize(300,200)->stream();
-                Storage::disk('local')->put($thumbnailPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($thumbnailPath .$name, $ImageUpload->__toString());
 
                 // for saving to database
                 $images[]=$name;
@@ -73,7 +73,7 @@ trait IncidentTraits {
             $name = $doc->hashName();
             $docsPath = 'files/documents/' .$name;
             // $path = $data['docs']->store($docsPath);
-            Storage::disk('local')->put($docsPath, file_get_contents($doc->getRealPath()));
+            Storage::disk('s3')->put($docsPath, file_get_contents($doc->getRealPath()));
             $data['docs'] = $name;
         }
 
@@ -93,8 +93,8 @@ trait IncidentTraits {
         }
 
         $incident = $incidents->create($data);
-        Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
-        Mail::to($projectEmail)->send(new IncidentReportMail($incident, $greetings));
+        // Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
+        // Mail::to($projectEmail)->send(new IncidentReportMail($incident, $greetings));
     }
 
     public function editIncident($data)
@@ -136,12 +136,12 @@ trait IncidentTraits {
                 $originalPath = 'files/image/';
                 $name = $file->hashName();
                 $ImageUpload->stream();
-                Storage::disk('local')->put($originalPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($originalPath .$name, $ImageUpload->__toString());
 
                 // for saving thumnail image
                 $thumbnailPath = 'files/thumbnail/';
                 $ImageUpload->resize(300,200)->stream();
-                Storage::disk('local')->put($thumbnailPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($thumbnailPath .$name, $ImageUpload->__toString());
 
                 // for saving to database
                 $images[]=$name;
@@ -154,8 +154,8 @@ trait IncidentTraits {
                         $path1 = 'files/image/';
                         $path2 = 'files/thumbnail/';
                         // Delete old image from file
-                        Storage::disk('local')->delete(parse_url($path1 .$photo));
-                        Storage::disk('local')->delete(parse_url($path2 .$photo));
+                        Storage::disk('s3')->delete(parse_url($path1 .$photo));
+                        Storage::disk('s3')->delete(parse_url($path2 .$photo));
                     }
                 }
 
@@ -169,7 +169,7 @@ trait IncidentTraits {
             $name = $doc->hashName();
             $docsPath = 'files/documents/' .$name;
             // $path = $data['docs']->store($docsPath);
-            Storage::disk('local')->put($docsPath, file_get_contents($doc->getRealPath()));
+            Storage::disk('s3')->put($docsPath, file_get_contents($doc->getRealPath()));
             $data['docs'] = $name;
 
             // Delete old deocuments from file
@@ -195,11 +195,11 @@ trait IncidentTraits {
                 $originalPath = 'files/image/';
                 $name = $file->hashName();
                 $ImageUpload->stream();
-                Storage::disk('local')->put($originalPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($originalPath .$name, $ImageUpload->__toString());
 
                 $thumbnailPath = 'files/thumbnail/';
                 $ImageUpload->resize(300,200)->stream();
-                Storage::disk('local')->put($thumbnailPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($thumbnailPath .$name, $ImageUpload->__toString());
 
                 $proofImgs[]=$name;
                 $data['proof'] = implode('|',$proofImgs);
@@ -216,11 +216,11 @@ trait IncidentTraits {
                 $originalPath = 'files/image/';
                 $name = $img->hashName();
                 $ImageUpload->stream();
-                Storage::disk('local')->put($originalPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($originalPath .$name, $ImageUpload->__toString());
 
                 $thumbnailPath = 'files/thumbnail/';
                 $ImageUpload->resize(300,200)->stream();
-                Storage::disk('local')->put($thumbnailPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($thumbnailPath .$name, $ImageUpload->__toString());
 
                 $images[]=$name;
                 $data['inc_img'] = implode("|",$images);
@@ -232,7 +232,7 @@ trait IncidentTraits {
 
             $name = $doc->hashName();
             $docsPath = 'files/documents/' .$name;
-            Storage::disk('local')->put($docsPath, file_get_contents($doc->getRealPath()));
+            Storage::disk('s3')->put($docsPath, file_get_contents($doc->getRealPath()));
             $data['docs'] = $name;
         }
 
@@ -288,11 +288,11 @@ trait IncidentTraits {
                 $originalPath = 'files/image/';
                 $name = $file->hashName();
                 $ImageUpload->stream();
-                Storage::disk('local')->put($originalPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($originalPath .$name, $ImageUpload->__toString());
 
                 $thumbnailPath = 'files/thumbnail/';
                 $ImageUpload->resize(300,200)->stream();
-                Storage::disk('local')->put($thumbnailPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($thumbnailPath .$name, $ImageUpload->__toString());
 
                 $proofImgs[]=$name;
                 $data['proof'] = implode('|',$proofImgs);
@@ -303,8 +303,8 @@ trait IncidentTraits {
                         $path1 = 'files/image/';
                         $path2 = 'files/thumbnail/';
                         // Delete old image from file
-                        Storage::disk('local')->delete(parse_url($path1 .$proof));
-                        Storage::disk('local')->delete(parse_url($path2 .$proof));
+                        Storage::disk('s3')->delete(parse_url($path1 .$proof));
+                        Storage::disk('s3')->delete(parse_url($path2 .$proof));
                     }
                 }
             }
@@ -320,11 +320,11 @@ trait IncidentTraits {
                 $originalPath = 'files/image/';
                 $name = $img->hashName();
                 $ImageUpload->stream();
-                Storage::disk('local')->put($originalPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($originalPath .$name, $ImageUpload->__toString());
 
                 $thumbnailPath = 'files/thumbnail/';
                 $ImageUpload->resize(300,200)->stream();
-                Storage::disk('local')->put($thumbnailPath .$name, $ImageUpload->__toString());
+                Storage::disk('s3')->put($thumbnailPath .$name, $ImageUpload->__toString());
 
                 $images[]=$name;
                 $data['inc_img'] = implode("|",$images);
@@ -335,8 +335,8 @@ trait IncidentTraits {
                         $path3 = 'files/image/';
                         $path4 = 'files/thumbnail/';
                         // Delete old image from file
-                        Storage::disk('local')->delete(parse_url($path3 .$image));
-                        Storage::disk('local')->delete(parse_url($path4 .$image));
+                        Storage::disk('s3')->delete(parse_url($path3 .$image));
+                        Storage::disk('s3')->delete(parse_url($path4 .$image));
                     }
                 }
             }
@@ -346,14 +346,14 @@ trait IncidentTraits {
             $doc = $data['docs'];
             $name = $doc->hashName();
             $docsPath = 'files/documents/' .$name;
-            Storage::disk('local')->put($docsPath, file_get_contents($doc->getRealPath()));
+            Storage::disk('s3')->put($docsPath, file_get_contents($doc->getRealPath()));
             $data['docs'] = $name;
 
             // Delete old deocuments from file
             if($report->docs) {
                 $path = 'files/documents/';
                 $path = 'storage/uploads/documents/';
-                Storage::disk('local')->delete(parse_url($path .$report->docs));
+                Storage::disk('s3')->delete(parse_url($path .$report->docs));
             }
         }
 

@@ -19,11 +19,11 @@ trait UserTraits {
             $name = $img->hashName();
             $storagePath = 'files/avatar/';
             $ImageUpload->fit(192)->stream();
-            Storage::disk('local')->put($storagePath .$name, $ImageUpload->__toString());
+            Storage::disk('s3')->put($storagePath .$name, $ImageUpload->__toString());
 
             // Delete the old Image from the file
             if($user->profile_pic) {
-                Storage::disk('local')->delete(parse_url($storagePath .$user->profile_pic));
+                Storage::disk('s3')->delete(parse_url($storagePath .$user->profile_pic));
             }
             $data['profile_pic'] = $name;
         }

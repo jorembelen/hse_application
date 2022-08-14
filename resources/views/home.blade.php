@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="row">
-    <div class="col-12 col-sm-6 col-xxl d-flex">
+    <div class="col-12 col-sm-12 col-xxl d-flex">
         <div class="card illustration flex-fill">
             <div class="card-body p-0 d-flex flex-fill">
                 <div class="row no-gutters w-100">

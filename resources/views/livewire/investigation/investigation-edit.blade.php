@@ -427,7 +427,7 @@
                                         <div class="row mt-4">
                                             @foreach ($oldProof as $photo)
                                             <div class="col-md-6 col-lg-6 col-xl-6 mt-2">
-                                                <img src="{{ Storage::disk('local')->url('files/image/'.$photo ) }}" height="150" width="300" class="card-img-top" alt="{{ $photo }}" >
+                                                <img src="{{ Storage::disk('s3')->url('files/image/'.$photo ) }}" height="150" width="300" class="card-img-top" alt="{{ $photo }}" >
                                             </div>
                                             @endforeach
                                         </div>
@@ -473,7 +473,7 @@
                                         <div class="row mt-4">
                                             @foreach ($oldImages as $image)
                                             <div class="col-md-6 col-lg-6 col-xl-6 mt-2">
-                                                <img src="{{ Storage::disk('local')->url('files/image/'.$image ) }}" height="150" width="300" class="card-img-top" alt="{{ $image }}" >
+                                                <img src="{{ Storage::disk('s3')->url('files/image/'.$image ) }}" height="150" width="300" class="card-img-top" alt="{{ $image }}" >
                                             </div>
                                             @endforeach
                                         </div>

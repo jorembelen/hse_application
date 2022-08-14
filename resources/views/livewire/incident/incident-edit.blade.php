@@ -350,7 +350,7 @@
                                 <div class="row mt-4">
                                     @foreach ($oldImages as $photo)
                                     <div class="col-6 col-md-4 col-lg-4 col-xl-3 mt-2">
-                                        <img src="{{ Storage::disk('local')->url('files/image/'.$photo ) }}" class="card-img-top" alt="{{ $photo }}" >
+                                        <img src="{{ Storage::disk('s3')->url('files/image/'.$photo ) }}" class="card-img-top" alt="{{ $photo }}" >
                                     </div>
                                     @endforeach
                                 </div>
