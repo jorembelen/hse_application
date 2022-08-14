@@ -365,12 +365,12 @@
         <td>
             @if($reports->proof)
             @foreach ($photos as $photo)
-            <img class="image" src="{{ asset('/storage/files/thumbnail/'.$photo) }}" height="150">
+            <img class="image" src="{{ Storage::disk('s3')->url('files/thumbnail/'.$photo ) }}" height="150">
             @endforeach
             @endif
             @if($reports->inc_img)
             @foreach ($images as $image)
-            <img class="image" src="{{ asset('/storage/files/thumbnail/'.$image) }}" height="150">
+            <img class="image" src="{{ Storage::disk('s3')->url('files/thumbnail/'.$image ) }}" height="150">
             @endforeach
             @endif
         </td>

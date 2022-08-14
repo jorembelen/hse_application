@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Incident;
+use App\Models\Report;
+use \PDF;
 
 class HomeController extends Controller
 {

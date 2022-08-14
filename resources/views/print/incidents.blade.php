@@ -161,7 +161,7 @@
                     <tbody>
                         <td>
                             @foreach ($photos as $photo)
-                            <img class="image" src="{{ asset('storage/files/thumbnail/'.$photo ) }}" height="150">
+                            <img class="image" src="{{ Storage::disk('s3')->url('files/thumbnail/'.$photo ) }}" height="150">
                             @endforeach
                         </td>
                     </tbody>
