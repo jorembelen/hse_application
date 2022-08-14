@@ -27,7 +27,18 @@
 
 </div>
 
+@if (session()->has('error'))
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <div class="alert-message">
+        <strong>{{ session('error') }}</strong>
+    </div>
+</div>
+@endif
 <div class="row">
+
 
     @if (auth()->user()->role === 'user' || auth()->user()->role === 'site_member')
         @livewire('project.dashboard')

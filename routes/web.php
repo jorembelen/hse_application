@@ -67,11 +67,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/admin-create-notification', CreateIncidentNotifications::class)->name('admin.create-notifications');
     Route::get('/admin-create/{incidentId}/investigation', CreateInvestigationReport::class)->name('admin.create-investigation');
 
-    Route::get('admin-locations', LocationsComponent::class)->name('admin.locations');
-    Route::get('admin-employees', EmployeesComponent::class)->name('admin.employees');
-    Route::get('admin-users', UsersComponent::class)->name('admin.users');
-    Route::get('admin-users-session', UserSessionsList::class)->name('admin.users-session');
 
     Route::get('edit/{incident}/incident-notification', IncidentEdit::class)->name('edit.incident');
+
+    Route::group(['middleware' => 'admin'], function () {
+
+        Route::get('admin-locations', LocationsComponent::class)->name('admin.locations');
+        Route::get('admin-employees', EmployeesComponent::class)->name('admin.employees');
+        Route::get('admin-users', UsersComponent::class)->name('admin.users');
+        Route::get('admin-users-session', UserSessionsList::class)->name('admin.users-session');
+
+    });
 
 });
