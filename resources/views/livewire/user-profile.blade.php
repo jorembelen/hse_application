@@ -131,12 +131,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" wire:loading.remove wire:target="profile_pic">
                             @if ($profile_pic)
                             <img src="{{ $profile_pic->temporaryUrl() }}" alt="{{ $profile_pic }}" class="img-fluid rounded-circle ml-4">
                             @else
                             <img src="{{ auth()->user()->getAvatar() }}" alt="{{ auth()->user()->name }}" class="img-fluid rounded-circle ml-4">
                             @endif
+                        </div>
+                        <div class="form-group col-md-6 mt-4" wire:loading wire:target="profile_pic">
+                            @include('spinner.uploading-images')
                         </div>
                     </div>
 
@@ -145,7 +148,6 @@
 
                 <div class="modal-footer">
                     <div wire:loading wire:target="submit" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Processing . . .</div>
-                    <div wire:loading wire:target="profile_pic" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Uploading . . .</div>
                     <div wire:loading wire:target="close" class="progress-bar progress-bar-striped progress-bar-animated " role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Cancelling . . .</div>
 
                     <div wire:loading.remove wire:target="close, submit, profile_pic">

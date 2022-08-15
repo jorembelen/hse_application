@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-
+    <button id="custom-message" class="mr-2 btn btn-primary">Custom</button>
 </div>
 
 @if (session()->has('error'))
@@ -48,4 +48,5 @@
     @endif
 
 </div>
+
 @endsection

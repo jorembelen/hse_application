@@ -65,9 +65,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/incident-investigation/{reportId}/details', InvestigationDetails::class)->name('investigation.info');
     Route::get('/incident-investigation/{investigation}/edit', InvestigationEdit::class)->name('investigation.edit');
     Route::get('/incident-notification/{incidentId}/details', IncidentDetails::class)->name('incident.info');
-    Route::get('/admin-pending-incident-notifications', PendingIncidents::class)->name('admin.pending-incidents');
-    Route::get('/admin-create-notification', CreateIncidentNotifications::class)->name('admin.create-notifications');
-    Route::get('/admin-create/{incidentId}/investigation', CreateInvestigationReport::class)->name('admin.create-investigation');
+    Route::get('/pending-incident-notifications', PendingIncidents::class)->name('admin.pending-incidents');
+    Route::get('/create-notification', CreateIncidentNotifications::class)->name('admin.create-notifications');
+    Route::get('/create/{incidentId}/investigation', CreateInvestigationReport::class)->name('admin.create-investigation');
 
 
     Route::get('edit/{incident}/incident-notification', IncidentEdit::class)->name('edit.incident');

@@ -25,6 +25,7 @@ class EmployeesComponent extends Component
         }
     }
 
+
     public function render()
     {
         $employees = Employee::search($this->query)->latest()->paginate(10);

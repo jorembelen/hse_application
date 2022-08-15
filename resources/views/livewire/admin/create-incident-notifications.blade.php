@@ -327,9 +327,9 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="date">Date and Time of Incident<span class="text-danger"> * </span></label>
-                               <div wire:ignore>
-                                <input type="text" value="{{ old('date') }}" id="dateTimeFlatpickr" wire:model.defer="date" class="form-control flatpickr flatpickr-input active" placeholder="Select Date and Time..">
-                               </div>
+                                <div wire:ignore>
+                                    <input type="text" value="{{ old('date') }}" id="dateTimeFlatpickr" wire:model.defer="date" class="form-control flatpickr flatpickr-input active" placeholder="Select Date and Time..">
+                                </div>
                                 @error('date')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -337,7 +337,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-6" >
+                            <div class="form-group col-md-6" wire:loading.remove wire:target="images">
                                 <div class="form-group custom-file-container" data-upload-id="myFirstImage" wire:ignore>
                                     <label>Incident Images (Attach image) <a href="#" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                                     <label class="custom-file-container__custom-file" >
@@ -352,11 +352,18 @@
                                 </div>
                                 @enderror
                             </div>
+                            <div class="form-group col-md-6 mt-4" wire:loading wire:target="images">
+                                @include('spinner.uploading-images')
+                            </div>
 
-                             <div class="form-group col-md-12">
-                                    <label for="docs">Attached Documents (word/pdf)<span class="text-danger"> </span></label>
-                                    <input type="file" class="form-control-file"  wire:model.defer="docs">
-                                    @error('docs')
+                            <div class="form-group col-md-12" wire:loading wire:target="docs">
+                                @include('spinner.uploading-documents')
+                            </div>
+
+                            <div class="form-group col-md-12" wire:loading.remove wire:target="docs">
+                                <label for="docs">Attached Documents (word/pdf)<span class="text-danger"> </span></label>
+                                <input type="file" class="form-control-file"  wire:model.defer="docs">
+                                @error('docs')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>
@@ -364,10 +371,8 @@
                             </div>
 
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" >
                             <div wire:loading wire:target="create" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Processing . . .</div>
-                            <div wire:loading wire:target="images" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Uploading Images . . .</div>
-                            <div wire:loading wire:target="docs" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Uploading Documents . . .</div>
 
                             <div wire:loading.remove wire:target="create, images, docs">
                                 <button  class="btn btn-dark waves-effect waves-light" type="submit">Submit</button>

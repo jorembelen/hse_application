@@ -56,4 +56,6 @@
     chart.render();
 </script>
 
+
+
 @endpush

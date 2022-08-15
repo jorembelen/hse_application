@@ -414,7 +414,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-6" >
+                            <div class="form-group col-md-6" wire:loading.remove wire:target="proof">
                                 <div class="form-group custom-file-container" data-upload-id="myFirstImage" wire:ignore>
                                     <label>Proof of Training (Attach image) <a href="#" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                                     <label class="custom-file-container__custom-file" >
@@ -429,7 +429,11 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-6" >
+                            <div class="form-group col-md-6 mt-4" wire:loading wire:target="proof">
+                                <br><br><br><br>
+                                @include('spinner.uploading-images')
+                            </div>
+                            <div class="form-group col-md-6" wire:loading.remove wire:target="inc_img">
                                 <div class="form-group custom-file-container" data-upload-id="mySecondImage" wire:ignore>
                                     <label>Incident Images (Attach image) <a href="#" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                                     <label class="custom-file-container__custom-file" >
@@ -444,8 +448,14 @@
                                 </div>
                                 @enderror
                             </div>
-
-                            <div class="form-group col-md-12 mt-2">
+                            <div class="form-group col-md-6 mt-4" wire:loading wire:target="inc_img">
+                                <br><br><br><br>
+                                @include('spinner.uploading-images')
+                            </div>
+                            <div class="form-group col-md-12" wire:loading wire:target="docs">
+                                @include('spinner.uploading-documents')
+                            </div>
+                            <div class="form-group col-md-12 mt-2" wire:loading.remove wire:target="docs">
                                 <label for="docs">Attached Documents (word/pdf)<span class="text-danger"> </span></label>
                                 <input type="file" class="form-control-file"  wire:model.defer="docs">
                                 @error('docs')
@@ -458,9 +468,6 @@
                         </div>
                         <div class="modal-footer mt-4">
                             <div wire:loading wire:target="create" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Processing . . .</div>
-                            <div wire:loading wire:target="proof" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Uploading Images . . .</div>
-                            <div wire:loading wire:target="inc_img" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Uploading Images . . .</div>
-                            <div wire:loading wire:target="docs" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Uploading Documents . . .</div>
 
                             <div wire:loading.remove wire:target="create, proof, inc_img, docs">
                                 <button  class="btn btn-dark waves-effect waves-light" type="submit">Submit</button>
