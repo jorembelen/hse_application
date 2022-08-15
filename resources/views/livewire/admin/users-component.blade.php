@@ -10,21 +10,11 @@
                     <div class="card-header">
                         <a class="btn btn-dark float-right" href="#" wire:click.prevent="showCreate"><i class="fas fa-plus-circle"></i> Add</a>
                     </div>
-                    <div class="col-sm-12 col-md-6 text-sm-end">
-                        <div id="datatable_filter" class="dataTables_filter"><label>Search:
-                            <input type="search" class="form-control " placeholder="Search here ..." aria-controls="datatable" wire:model.debounce.500ms="query"></label>
-                        </div>
-                        {{-- <div class="form-group">
-                            <div class="input-group dataTables_filter" id="datatable_filter">
-                                <span class="input-group-prepend">
-                                    <button class="btn btn-secondary" type="button">Search!</button>
-                                </span>
-                                <input type="text" class="form-control" placeholder="Search here..." wire:model.debounce.500ms="query">
-                            </div>
-                        </div> --}}
-                    </div>
                 </div>
                 <div class="card-body table-responsive">
+
+                    @include('search.table-search')
+
                     <table  class="table table-striped dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables-reponsive_info">
                         <thead>
                             <tr>

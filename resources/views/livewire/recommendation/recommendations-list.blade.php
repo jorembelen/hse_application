@@ -11,13 +11,12 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
                         Back
                     </a>
-                    <div class="col-sm-12 col-md-6 text-sm-end">
-                        <div id="datatable_filter" class="dataTables_filter"><label>Search:
-                            <input type="search" class="form-control form-control-sm" placeholder="Search Type or ID here ..." aria-controls="datatable" wire:model.debounce.500ms="query"></label>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="card-body table-responsive">
+
+                    @include('search.table-search')
+
                     <table  class="table table-striped dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables-reponsive_info">
                         <thead>
                             <tr>
