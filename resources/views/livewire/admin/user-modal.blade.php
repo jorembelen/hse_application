@@ -66,7 +66,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row" style="{{ $role === 'user' ? null : 'display:none' }}">
+                    <div class="form-group row" style="{{ in_array($role, ['user', 'site_member']) ? null : 'display:none' }}">
                         <label for="create-email" class="col-md-4 ml-3 col-form-label">Location</label>
                         <div class="col-md-11 ml-3">
                             <div wire:ignore>
@@ -165,7 +165,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row" style="{{ $role === 'user' ? null : 'display:none' }}">
+                    <div class="form-group row" style="{{ in_array($role, ['user', 'site_member']) ? null : 'display:none' }}">
                         <label for="create-email" class="col-md-4 ml-3 col-form-label">Location</label>
                         <div class="col-md-11 ml-3">
                             <div wire:ignore>
