@@ -4,7 +4,7 @@
 
 <head>
 
-	<title>SADARA||FMS - 404</title>
+	<title>HSE WEB APP - 404</title>
 
 	<link rel="canonical" href="https://appstack.bootlab.io/pages-404.html" />
 	<link rel="shortcut icon" href="img/favicon.ico">

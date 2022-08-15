@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>HSE WEB APP - 404</title>
+	<title>HSE WEB APP - 503</title>
 
 	<link rel="canonical" href="https://appstack.bootlab.io/pages-500.html" />
 	<link rel="shortcut icon" href="img/favicon.ico">
@@ -24,10 +24,9 @@
 						<div class="d-table-cell align-middle">
 
 							<div class="text-center">
-								<h1 class="display-1 font-weight-bold">500</h1>
-								<p class="h1">Internal server error.</p>
-								<p class="h2 font-weight-normal mt-3 mb-4">The server encountered something unexpected that didn't allow it to complete the request.</p>
-								<a href="{{ route('home') }}" class="btn btn-primary btn-lg">Return to home page.</a>
+								<h1 class="display-1 font-weight-bold">503</h1>
+								<p class="h1">The system is in Maintenance mode.</p>
+								<p class="h2 font-weight-normal mt-3 mb-4">Please contact the system administrator.</p>
 							</div>
 
 						</div>
