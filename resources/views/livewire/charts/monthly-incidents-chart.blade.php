@@ -78,4 +78,6 @@
         chart.render();
     });
 </script>
+
+
 @endpush

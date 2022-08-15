@@ -46,6 +46,7 @@
         @livewire('charts.incident-type')
         @livewire('charts.incident-type-wps')
         @livewire('charts.monthly-incidents-chart')
+        @livewire('charts.monthly-incidents-type-chart')
     @endif
 
 </div>
