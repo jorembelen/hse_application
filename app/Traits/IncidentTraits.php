@@ -81,7 +81,7 @@ trait IncidentTraits {
         ->orWhere('role', '=', 'admin')
         ->get();
         $projectEmail = User::wherelocation_id($data['location'])->get();
-        // dd($receiverName);
+
         $greetings = "";
         $hour = date('H');
         if ($hour >= 18) {
@@ -93,8 +93,8 @@ trait IncidentTraits {
         }
 
         $incident = $incidents->create($data);
-        // Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
-        // Mail::to($projectEmail)->send(new IncidentReportMail($incident, $greetings));
+        Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
+        Mail::to($projectEmail)->send(new IncidentReportMail($incident, $greetings));
     }
 
     public function editIncident($data)
@@ -253,10 +253,10 @@ trait IncidentTraits {
         }
 
         $email = User::whererole('super_admin')
-        // ->orWhere('role', '=', 'admin')
+        ->orWhere('role', '=', 'admin')
         ->get();
         $projectEmail = User::wherelocation_id($data['location_id'])->get();
-        // dd($receiverName);
+
         $greetings = "";
         $hour = date('H');
         if ($hour >= 18) {
