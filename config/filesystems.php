@@ -43,15 +43,10 @@ return [
 
     'disks' => [
 
-        'public_uploads' => [
-            'driver' => 'local',
-            'root'   => public_path() . '/files',
-        ],
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('public/'),
-            'visibility' => 'public',
+            'root' => storage_path('app'),
         ],
 
         'public' => [
