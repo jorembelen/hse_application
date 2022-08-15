@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>HSE Login Page</title>
+    <title>HSE APP Login Page</title>
     {{-- <link rel="icon" type="image/x-icon" href="/admin/assets/img/rcl.ico"/> --}}
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="/admin/https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">

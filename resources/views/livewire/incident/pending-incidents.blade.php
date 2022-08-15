@@ -53,8 +53,10 @@
                                 <td>{{ date('Y-m-d h:i a', strtotime($incident->date)) }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('print', $incident->id) }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-print"></i></a>
-                                    @if($incident->status != 1)
-                                    <a href="{{ route('edit.incident', $incident->id) }}"><i class="fa fa-edit"></i></a>
+                                    @if(in_array(auth()->user()->role, ['user', 'admin', 'super_admin']))
+                                        @if($incident->status != 1)
+                                        <a href="{{ route('edit.incident', $incident->id) }}"><i class="fa fa-edit"></i></a>
+                                        @endif
                                     @endif
                                 </td>
                             </tr>

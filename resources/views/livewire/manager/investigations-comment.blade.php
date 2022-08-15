@@ -228,7 +228,7 @@
                                 @if($report->docs)
                                 <tr>
                                     <td>
-                                        <a class="bs-tooltip" title="Click to download this attachment!" href="{{ Storage::disk('local')->url('files/documents/'.$report->docs ) }}" target="_blank" rel="noopener noreferrer">
+                                        <a class="bs-tooltip" title="Click to download this attachment!" href="{{ Storage::disk('s3')->url('files/documents/'.$report->docs ) }}" target="_blank" rel="noopener noreferrer">
                                             <button class="btn btn-danger mb-2 mr-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                                                 Attachment</button>
@@ -247,8 +247,8 @@
                                         <div id="demo-test-gallery" class="demo-gallery" data-pswp-uid="1">
 
                                             @foreach ($photos as $image)
-                                            <a class="img-1" href="{{ Storage::disk('local')->url('files/image/'.$image ) }}" data-size="1600x1068" data-med="{{ Storage::disk('local')->url('files/image/'.$image ) }}" data-med-size="1024x683" data-author="Samuel Rohl">
-                                                <img src="{{ Storage::disk('local')->url('files/thumbnail/'.$image ) }}" alt="image-gallery">
+                                            <a class="img-1" href="{{ Storage::disk('s3')->url('files/image/'.$image ) }}" data-size="1600x1068" data-med="{{ Storage::disk('s3')->url('files/image/'.$image ) }}" data-med-size="1024x683" data-author="Samuel Rohl">
+                                                <img src="{{ Storage::disk('s3')->url('files/thumbnail/'.$image ) }}" alt="image-gallery">
 
                                             </a>
                                             @endforeach
@@ -314,8 +314,8 @@
                                         <h5>Incident Image(s)</h5>
                                         <div id="demo-test-gallery" class="demo-gallery" data-pswp-uid="1">
                                             @foreach ($images as $img)
-                                            <a class="img-1" href="{{ Storage::disk('local')->url('files/image/'.$img ) }}" data-size="1600x1068" data-med="{{ $img ? Storage::disk('local')->url('files/image/'.$img ) : null }}" data-med-size="1024x683" data-author="Samuel Rohl">
-                                                <img src="{{ Storage::disk('local')->url('files/thumbnail/'.$img ) }}" alt="image-gallery">
+                                            <a class="img-1" href="{{ Storage::disk('s3')->url('files/image/'.$img ) }}" data-size="1600x1068" data-med="{{ $img ? Storage::disk('s3')->url('files/image/'.$img ) : null }}" data-med-size="1024x683" data-author="Samuel Rohl">
+                                                <img src="{{ Storage::disk('s3')->url('files/thumbnail/'.$img ) }}" alt="image-gallery">
 
                                             </a>
                                             @endforeach

@@ -42,7 +42,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->incident_id }}</td>
                                 <td>
-                                    <a class="bs-tooltip" title="Click to view the Report!" href="{{ route('investigation.info', $item->report_id) }}">{{ $item->report_id }}</a>
+                                    <a class="bs-tooltip" title="Click to view the Report!" href="{{ route('investigation.info', $item->incident_id) }}">{{ $item->report_id }}</a>
                                 </td>
                                 <td>{{ $item->root_name }}</td>
                                 <td>{{ $item->type }}</td>
