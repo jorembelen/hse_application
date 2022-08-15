@@ -105,6 +105,7 @@
     @stack('edit-notifications-js')
     @stack('recommendation-js')
     @stack('comments-js')
+    @stack('monthly-incidents-js')
 
     @livewireScripts
 </body>

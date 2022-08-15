@@ -4,18 +4,18 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">Root Cause</h5>
+                </div>
+                <div class="card-body">
                     <table class="table mb-0 table-responsive">
                         <thead>
                             <tr>
-                                <td style="font-size: 12px;"><i class="fas fa-square-full text-primary"></i> People: {{$cause[0]}}</td>
-                                <td style="font-size: 12px;"><i class="fas fa-square-full text-warning"></i> Process & Procedure: {{$cause[1]}}</td>
-                                <td style="font-size: 12px;"><i class="fas fa-square-full text-danger"></i> Equipment: {{$cause[2]}}</td>
-                                <td style="font-size: 12px;"><i class="fas fa-square-full text-success"></i> Workplace: {{$cause[3]}}</td>
+                                <td style="font-size: 8px;"><i class="fas fa-square-full text-primary"></i> People: {{$cause[0]}}</td>
+                                <td style="font-size: 8px;"><i class="fas fa-square-full text-warning"></i> Process & Procedure: {{$cause[1]}}</td>
+                                <td style="font-size: 8px;"><i class="fas fa-square-full text-danger"></i> Equipment: {{$cause[2]}}</td>
+                                <td style="font-size: 8px;"><i class="fas fa-square-full text-success"></i> Workplace: {{$cause[3]}}</td>
                             </tr>
                         </thead>
                     </table>
-                </div>
-                <div class="card-body">
                     <div class="chart">
                         <canvas id="chartjs-pie"></canvas>
                     </div>
