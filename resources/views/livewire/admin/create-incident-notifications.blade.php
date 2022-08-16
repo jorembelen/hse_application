@@ -185,6 +185,7 @@
                                         <option value="Burn" @if (old('injury_sustain') == 'Burn') selected="selected" @endif>Burn</option>
                                         <option value="Bruising" @if (old('injury_sustain') == 'Bruising') selected="selected" @endif>Bruising</option>
                                         <option value="Amputation" @if (old('injury_sustain') == 'Amputation') selected="selected" @endif>Amputation</option>
+                                        <option value="Puncture">Puncture</option>
                                         <option value="None" @if (old('injury_sustain') == 'None') selected="selected" @endif>None</option>
                                     </select>
                                 </div>

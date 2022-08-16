@@ -162,7 +162,6 @@ class MonthlyIncidentsTypeChart extends Component
             $nearMiss[$month -1 ] = $incidents[$index];
         }
 
-        // dd($fatality);
         return view('livewire.charts.monthly-incidents-type-chart', compact('fatality', 'firstAid', 'lostInjury', 'dangerousOccurence', 'propertyDamage', 'mtc', 'rwc', 'mvi', 'nearMiss'));
     }
 }

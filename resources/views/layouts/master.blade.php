@@ -14,7 +14,7 @@
     <link rel="canonical" href="pages-blank.html" />
     <link rel="shortcut icon" href="{{ asset('assets/img/rcl.ico') }}">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap" rel="stylesheet"> --}}
 
     <link href="{{ asset('assets/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
@@ -46,6 +46,7 @@
 
                     @yield('content')
                     @include('scripts.sweet-alert')
+                    @include('scripts.avatar')
 
 
                 </div>
@@ -84,7 +85,7 @@
                 $(this)
                 .wrap("<div class=\"position-relative\"></div>")
                 .select2({
-                    // placeholder: "Select value",
+                    placeholder: "Select value",
                     dropdownParent: $(this).parent()
                 });
             })
@@ -92,9 +93,15 @@
         });
     </script>
 
-<script src="{{ asset('assets/lightbox/photoswipe.min.js') }}"></script>
-<script src="{{ asset('assets/lightbox/photoswipe-ui-default.min.js') }}"></script>
-<script src="{{ asset('assets/lightbox/custom-photswipe.js') }}"></script>
+    <script>
+        var ss = $(".basic").select2({
+            tags: true,
+        });
+    </script>
+
+    <script src="{{ asset('assets/lightbox/photoswipe.min.js') }}"></script>
+    <script src="{{ asset('assets/lightbox/photoswipe-ui-default.min.js') }}"></script>
+    <script src="{{ asset('assets/lightbox/custom-photswipe.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
     @include('scripts.sweet-alert')
 

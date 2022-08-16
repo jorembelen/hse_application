@@ -150,7 +150,9 @@
                         <label for="create-email" class="col-md-4 ml-3 col-form-label">User Role</label>
                         <div class="col-md-11 ml-3">
                             <select wire:model="role" class="form-control">
+                                @if (auth()->user()->role === 'super_admin')
                                 <option value="admin">Admin</option>
+                                @endif
                                 <option value="user">User</option>
                                 <option value="site_member">Site Member</option>
                                 <option value="gm">GM</option>

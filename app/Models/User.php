@@ -87,10 +87,7 @@ class User extends Authenticatable
     }
 
     public function getAvatar() {
-        if($this->profile_pic){
             return  Storage::disk('s3')->url('files/avatar/'.$this->profile_pic);
-        }
-        return asset('/assets/img/avatars/no-image.png');
     }
 
     public function setPasswordAttribute($value)

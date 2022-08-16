@@ -37,9 +37,9 @@
     </div>
 </div>
 @endif
+
+
 <div class="row">
-
-
     @if (auth()->user()->role === 'user' || auth()->user()->role === 'site_member')
         @livewire('project.dashboard')
     @else
