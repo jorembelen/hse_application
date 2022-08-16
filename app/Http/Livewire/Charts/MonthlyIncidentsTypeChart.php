@@ -7,9 +7,12 @@ use Livewire\Component;
 
 class MonthlyIncidentsTypeChart extends Component
 {
+    public $fatality, $lostInjury, $dangerousOccurence, $propertyDamage, $mtc, $rwc, $mvi, $nearMiss, $firstAid;
+
     public function render()
     {
-        $fatality = [];
+
+        $this->fatality = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -21,12 +24,12 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('Fatality')
         ->pluck('month');
-        $fatality = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->fatality = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $fatality[$month -1 ] = $incidents[$index];
+            $this->fatality[$month -1 ] = $incidents[$index];
         }
 
-        $firstAid = [];
+        $this->firstAid = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -38,12 +41,12 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('First Aid')
         ->pluck('month');
-        $firstAid = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->firstAid = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $firstAid[$month -1 ] = $incidents[$index];
+            $this->firstAid[$month -1 ] = $incidents[$index];
         }
 
-        $lostInjury = [];
+        $this->lostInjury = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -55,12 +58,12 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('Lost Time Injury')
         ->pluck('month');
-        $lostInjury = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->lostInjury = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $lostInjury[$month -1 ] = $incidents[$index];
+            $this->lostInjury[$month -1 ] = $incidents[$index];
         }
 
-        $dangerousOccurence = [];
+        $this->dangerousOccurence = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -72,12 +75,12 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('Dangerous Occurence')
         ->pluck('month');
-        $dangerousOccurence = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->dangerousOccurence = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $dangerousOccurence[$month -1 ] = $incidents[$index];
+            $this->dangerousOccurence[$month -1 ] = $incidents[$index];
         }
 
-        $propertyDamage = [];
+        $this->propertyDamage = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -89,12 +92,12 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('Property Damage')
         ->pluck('month');
-        $propertyDamage = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->propertyDamage = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $propertyDamage[$month -1 ] = $incidents[$index];
+            $this->propertyDamage[$month -1 ] = $incidents[$index];
         }
 
-        $mtc = [];
+        $this->mtc = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -106,12 +109,12 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('MTC')
         ->pluck('month');
-        $mtc = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->mtc = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $mtc[$month -1 ] = $incidents[$index];
+            $this->mtc[$month -1 ] = $incidents[$index];
         }
 
-        $rwc = [];
+        $this->rwc = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -123,12 +126,12 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('RWC')
         ->pluck('month');
-        $rwc = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->rwc = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $rwc[$month -1 ] = $incidents[$index];
+            $this->rwc[$month -1 ] = $incidents[$index];
         }
 
-        $mvi = [];
+        $this->mvi = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -140,12 +143,12 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('MVI')
         ->pluck('month');
-        $mvi = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->mvi = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $mvi[$month -1 ] = $incidents[$index];
+            $this->mvi[$month -1 ] = $incidents[$index];
         }
 
-        $nearMiss = [];
+        $this->nearMiss = [];
         $incidents = DB::table('incidents')->select(DB::raw("COUNT(*) as count"))
         ->whereYear('date', date('Y'))
         ->groupBy(DB::raw("Month(date)"))
@@ -157,11 +160,11 @@ class MonthlyIncidentsTypeChart extends Component
         ->groupBy(DB::raw("Month(date)"))
         ->wheretype('Near Miss')
         ->pluck('month');
-        $nearMiss = array(0,0,0,0,0,0,0,0,0,0,0,0);
+        $this->nearMiss = array(0,0,0,0,0,0,0,0,0,0,0,0);
         foreach($months as $index => $month){
-            $nearMiss[$month -1 ] = $incidents[$index];
+            $this->nearMiss[$month -1 ] = $incidents[$index];
         }
 
-        return view('livewire.charts.monthly-incidents-type-chart', compact('fatality', 'firstAid', 'lostInjury', 'dangerousOccurence', 'propertyDamage', 'mtc', 'rwc', 'mvi', 'nearMiss'));
+        return view('livewire.charts.monthly-incidents-type-chart');
     }
 }

@@ -4,7 +4,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-3">
-                    <h5 class="card-title">Monthly Incident Type Chart for the Year {{ now()->format('Y') }}</h5>
+                    <h5 class="card-title">Monthly Incident Type Chart for the Year {{ now()->format('Y') }} </h5>
                 </div>
             </div>
         </div>
@@ -40,66 +40,39 @@
             },
             series: [{
                 name: "Fatality",
-                data:[
-                ' {{ $fatality[0] }} ', ' {{ $fatality[1] }} ', ' {{ $fatality[2] }} ', ' {{ $fatality[3] }} ', ' {{ $fatality[4] }} ', ' {{ $fatality[5] }} ',
-                ' {{ $fatality[6] }} ',' {{ $fatality[7] }} ', ' {{ $fatality[8] }} ', ' {{ $fatality[9] }} ', ' {{ $fatality[10] }} ', ' {{ $fatality[11] }} '
-                ]
+                data: {{ json_encode($fatality) }}
             },
             {
                 name: "Lost Time Injury",
-                data:[
-                ' {{ $lostInjury[0] }} ', ' {{ $lostInjury[1] }} ', ' {{ $lostInjury[2] }} ', ' {{ $lostInjury[3] }} ', ' {{ $lostInjury[4] }} ', ' {{ $lostInjury[5] }} ',
-                ' {{ $lostInjury[6] }} ',' {{ $lostInjury[7] }} ', ' {{ $lostInjury[8] }} ', ' {{ $lostInjury[9] }} ', ' {{ $lostInjury[10] }} ', ' {{ $lostInjury[11] }} '
-                ]
+                data: {{ json_encode($lostInjury) }}
             },
             {
                 name: "Dangerous Occurence",
-                data:[
-                ' {{ $dangerousOccurence[0] }} ', ' {{ $dangerousOccurence[1] }} ', ' {{ $dangerousOccurence[2] }} ', ' {{ $dangerousOccurence[3] }} ', ' {{ $dangerousOccurence[4] }} ', ' {{ $dangerousOccurence[5] }} ',
-                ' {{ $dangerousOccurence[6] }} ',' {{ $dangerousOccurence[7] }} ', ' {{ $dangerousOccurence[8] }} ', ' {{ $dangerousOccurence[9] }} ', ' {{ $dangerousOccurence[10] }} ', ' {{ $dangerousOccurence[11] }} '
-                ]
+                data: {{ json_encode($dangerousOccurence) }}
             },
             {
                 name: "First Aid",
-                data:[
-                ' {{ $firstAid[0] }} ', ' {{ $firstAid[1] }} ', ' {{ $firstAid[2] }} ', ' {{ $firstAid[3] }} ', ' {{ $firstAid[4] }} ', ' {{ $firstAid[5] }} ',
-                ' {{ $firstAid[6] }} ',' {{ $firstAid[7] }} ', ' {{ $firstAid[8] }} ', ' {{ $firstAid[9] }} ', ' {{ $firstAid[10] }} ', ' {{ $firstAid[11] }} '
-                ]
+                data: {{ json_encode($firstAid) }}
             },
             {
                 name: "Property Damage",
-                data:[
-                ' {{ $propertyDamage[0] }} ', ' {{ $propertyDamage[1] }} ', ' {{ $propertyDamage[2] }} ', ' {{ $propertyDamage[3] }} ', ' {{ $propertyDamage[4] }} ', ' {{ $propertyDamage[5] }} ',
-                ' {{ $propertyDamage[6] }} ',' {{ $propertyDamage[7] }} ', ' {{ $propertyDamage[8] }} ', ' {{ $propertyDamage[9] }} ', ' {{ $propertyDamage[10] }} ', ' {{ $propertyDamage[11] }} '
-                ]
+                data: {{ json_encode($propertyDamage) }}
             },
             {
                 name: "MTC",
-                data:[
-                ' {{ $mtc[0] }} ', ' {{ $mtc[1] }} ', ' {{ $mtc[2] }} ', ' {{ $mtc[3] }} ', ' {{ $mtc[4] }} ', ' {{ $mtc[5] }} ',
-                ' {{ $mtc[6] }} ',' {{ $mtc[7] }} ', ' {{ $mtc[8] }} ', ' {{ $mtc[9] }} ', ' {{ $mtc[10] }} ', ' {{ $mtc[11] }} '
-                ]
+                data: {{ json_encode($mtc) }}
             },
             {
                 name: "RWC",
-                data:[
-                ' {{ $rwc[0] }} ', ' {{ $rwc[1] }} ', ' {{ $rwc[2] }} ', ' {{ $rwc[3] }} ', ' {{ $rwc[4] }} ', ' {{ $rwc[5] }} ',
-                ' {{ $rwc[6] }} ',' {{ $rwc[7] }} ', ' {{ $rwc[8] }} ', ' {{ $rwc[9] }} ', ' {{ $rwc[10] }} ', ' {{ $rwc[11] }} '
-                ]
+                data: {{ json_encode($rwc) }}
             },
             {
                 name: "MVI",
-                data:[
-                ' {{ $mvi[0] }} ', ' {{ $mvi[1] }} ', ' {{ $mvi[2] }} ', ' {{ $mvi[3] }} ', ' {{ $mvi[4] }} ', ' {{ $mvi[5] }} ',
-                ' {{ $mvi[6] }} ',' {{ $mvi[7] }} ', ' {{ $mvi[8] }} ', ' {{ $mvi[9] }} ', ' {{ $mvi[10] }} ', ' {{ $mvi[11] }} '
-                ]
+                data: {{ json_encode($mvi) }}
             },
             {
                 name: "Near Miss",
-                data:[
-                ' {{ $nearMiss[0] }} ', ' {{ $nearMiss[1] }} ', ' {{ $nearMiss[2] }} ', ' {{ $nearMiss[3] }} ', ' {{ $nearMiss[4] }} ', ' {{ $nearMiss[5] }} ',
-                ' {{ $nearMiss[6] }} ',' {{ $nearMiss[7] }} ', ' {{ $nearMiss[8] }} ', ' {{ $nearMiss[9] }} ', ' {{ $nearMiss[10] }} ', ' {{ $nearMiss[11] }} '
-                ]
+                data: {{ json_encode($nearMiss) }}
             }
             ],
             markers: {
@@ -144,5 +117,147 @@
     });
 </script>
 
+{{-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Line chart
+        new Chart(document.getElementById("inc-types-chart"), {
+            type: "line",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Fatality",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.info,
+                    data: {{ json_encode($fatality) }}
+                }, {
+                    label: "Lost Injury",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.success,
+                    data: {{ json_encode($lostInjury) }}
+                }, {
+                    label: "Dangerous Occurence",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.primary,
+                    data: {{ json_encode($dangerousOccurence) }}
+                }, {
+                    label: "Property Damage",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.primary,
+                    data: {{ json_encode($propertyDamage) }}
+                }, {
+                    label: "First Aid",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.danger,
+                    borderDash: [4, 4],
+                    data: {{ json_encode($firstAid) }}
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    intersect: false
+                },
+                hover: {
+                    intersect: true
+                },
+                plugins: {
+                    filler: {
+                        propagate: false
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        reverse: true,
+                        gridLines: {
+                            color: "rgba(0,0,0,0.05)"
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 500
+                        },
+                        display: true,
+                        borderDash: [5, 5],
+                        gridLines: {
+                            color: "rgba(0,0,0,0)",
+                            fontColor: "#fff"
+                        }
+                    }]
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        window.addEventListener('reApplyChart',  event => {
+            new Chart(document.getElementById("filtered-chart"), {
+            type: "line",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Property Damage",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.primary,
+                    data: {{ json_encode($propertyDamage) }}
+                }, {
+                    label: "First Aid Two",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme["danger"],
+                    borderDash: [4, 4],
+                    data: {{ json_encode($firstAidTwo) }}
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    intersect: false
+                },
+                hover: {
+                    intersect: true
+                },
+                plugins: {
+                    filler: {
+                        propagate: false
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        reverse: true,
+                        gridLines: {
+                            color: "rgba(0,0,0,0.05)"
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 500
+                        },
+                        display: true,
+                        borderDash: [5, 5],
+                        gridLines: {
+                            color: "rgba(0,0,0,0)",
+                            fontColor: "#fff"
+                        }
+                    }]
+                }
+            }
+        });
+        });
+    });
+</script> --}}
 
 @endpush

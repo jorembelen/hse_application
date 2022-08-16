@@ -1,7 +1,8 @@
 <nav id="sidebar" class="sidebar">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="/">
-            <span class="align-middle mr-3">HSE APP</span>
+            {{-- <span class="align-middle mr-3">HSE APP</span> --}}
+            <img src="{{ asset('/assets/img/logo.png') }}" alt="" height="50" width="150">
         </a>
 
         <ul class="sidebar-nav">
