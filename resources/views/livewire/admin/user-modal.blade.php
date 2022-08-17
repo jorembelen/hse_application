@@ -1,7 +1,7 @@
 
 {{-- Users --}}
 
-<!-- Edit modal content -->
+<!-- Create modal content -->
 <div id="createUser" class="modal fade" wire:ignore.self>
     <div class="modal-dialog">
         <div class="modal-content">
@@ -16,7 +16,7 @@
                     <div class="form-group row">
                         <label for="create-username" class="col-md-4 ml-3 col-form-label">Name</label>
                         <div class="col-md-11 ml-3">
-                            <input type="text" class="form-control mb-2" wire:model.defer="name" placeholder="Name">
+                            <input type="text" class="form-control mb-2 @error('name') is-invalid @enderror" wire:model.defer="name" placeholder="Name">
                             @error('name')
                             <div class="text-danger">
                                 {{ $message }}
@@ -27,7 +27,7 @@
                     <div class="form-group row">
                         <label for="create-name" class="col-md-4 ml-3 col-form-label">Username</label>
                         <div class="col-md-11 ml-3">
-                            <input type="text" class="form-control mb-2" wire:model.defer="username"  placeholder="Username">
+                            <input type="text" class="form-control mb-2 @error('username') is-invalid @enderror" wire:model.defer="username"  placeholder="Username">
                             @error('username')
                             <div class="text-danger">
                                 {{ $message }}
@@ -38,7 +38,7 @@
                     <div class="form-group row">
                         <label for="create-email" class="col-md-4 ml-3 col-form-label">Email</label>
                         <div class="col-md-11 ml-3">
-                            <input type="email" class="form-control mb-4"  wire:model.defer="email" placeholder="Email">
+                            <input type="text" class="form-control mb-2 @error('email') is-invalid @enderror"  wire:model.defer="email" placeholder="Email">
                             @error('email')
                             <div class="text-danger">
                                 {{ $message }}
@@ -49,7 +49,7 @@
                     <div class="form-group row">
                         <label for="create-email" class="col-md-4 ml-3 col-form-label">User Role</label>
                         <div class="col-md-11 ml-3">
-                            <select wire:model="role" class="form-control">
+                            <select wire:model="role" class="form-control @error('role') is-invalid @enderror">
                                 <option value="">Choose ...</option>
                                 <option value="admin">Admin</option>
                                 <option value="user">Site User</option>
@@ -116,9 +116,9 @@
                     <div class="form-group row">
                         <label for="create-username" class="col-md-4 ml-3 col-form-label">Name</label>
                         <div class="col-md-11 ml-3">
-                            <input type="text" class="form-control mb-2" wire:model.defer="name" placeholder="Name">
+                            <input type="text" class="form-control mb-2 @error('name') is-invalid @enderror" wire:model.defer="name" placeholder="Name">
                             @error('name')
-                            <div class="text-danger">
+                            <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
@@ -127,7 +127,7 @@
                     <div class="form-group row">
                         <label for="create-name" class="col-md-4 ml-3 col-form-label">Username</label>
                         <div class="col-md-11 ml-3">
-                            <input type="text" class="form-control mb-2" wire:model.defer="username"  placeholder="Username">
+                            <input type="text" class="form-control mb-2 @error('username') is-invalid @enderror" wire:model.defer="username"  placeholder="Username">
                             @error('username')
                             <div class="text-danger">
                                 {{ $message }}
@@ -138,7 +138,7 @@
                     <div class="form-group row">
                         <label for="create-email" class="col-md-4 ml-3 col-form-label">Email</label>
                         <div class="col-md-11 ml-3">
-                            <input type="email" class="form-control mb-4"  wire:model.defer="email" placeholder="Email">
+                            <input type="email" class="form-control mb-2 @error('email') is-invalid @enderror"  wire:model.defer="email" placeholder="Email">
                             @error('email')
                             <div class="text-danger">
                                 {{ $message }}
@@ -149,7 +149,7 @@
                     <div class="form-group row">
                         <label for="create-email" class="col-md-4 ml-3 col-form-label">User Role</label>
                         <div class="col-md-11 ml-3">
-                            <select wire:model="role" class="form-control">
+                            <select wire:model="role" class="form-control @error('role') is-invalid @enderror">
                                 @if (auth()->user()->role === 'super_admin')
                                 <option value="admin">Admin</option>
                                 @endif

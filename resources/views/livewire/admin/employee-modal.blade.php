@@ -1,7 +1,7 @@
 
 {{-- Employees --}}
 
-    <!-- Edit modal content -->
+    <!-- Create modal content -->
     <div id="createEmployee" class="modal fade" wire:ignore.self>
         <div class="modal-dialog">
             <div class="modal-content">
@@ -16,7 +16,7 @@
                         <div class="form-group row">
                             <label for="create-name" class="col-md-4 ml-3 col-form-label">Badge</label>
                             <div class="col-md-11 ml-3">
-                              <input type="number" class="form-control mb-2" wire:model.defer="badge"  placeholder="Badge number">
+                              <input type="number" class="form-control @error('badge') is-invalid @enderror" wire:model.defer="badge"  placeholder="Badge number">
                               @error('badge')
                               <div class="text-danger">
                                   {{ $message }}
@@ -27,7 +27,7 @@
                         <div class="form-group row">
                             <label for="create-username" class="col-md-4 ml-3 col-form-label">Name</label>
                             <div class="col-md-11 ml-3">
-                              <input type="text" class="form-control mb-2" wire:model.defer="name" placeholder="Name">
+                              <input type="text" class="form-control @error('name') is-invalid @enderror" wire:model.defer="name" placeholder="Name">
                               @error('name')
                               <div class="text-danger">
                                   {{ $message }}
@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label for="create-email" class="col-md-4 ml-3 col-form-label">Designation</label>
                             <div class="col-md-11 ml-3">
-                              <input type="text" class="form-control mb-4"  wire:model.defer="designation" placeholder="Designation">
+                              <input type="text" class="form-control @error('designation') is-invalid @enderror"  wire:model.defer="designation" placeholder="Designation">
                               @error('designation')
                               <div class="text-danger">
                                   {{ $message }}
@@ -71,7 +71,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Update ID No. {{ $employeeId }} </h4>
+                    <h4 class="modal-title" id="myModalLabel">Update {{ $name }}? </h4>
                     <button type="button" class="close" wire:click.prevent="close">×</button>
                 </div>
                 <div class="modal-body">
@@ -81,7 +81,7 @@
                         <div class="form-group row">
                             <label for="create-name" class="col-md-4 ml-3 col-form-label">Badge</label>
                             <div class="col-md-11 ml-3">
-                              <input type="number" class="form-control mb-2" wire:model.defer="badge"  placeholder="badge number">
+                              <input type="number" class="form-control @error('badge') is-invalid @enderror" wire:model.defer="badge"  placeholder="badge number">
                               @error('badge')
                               <div class="text-danger">
                                   {{ $message }}
@@ -92,7 +92,7 @@
                         <div class="form-group row">
                             <label for="create-username" class="col-md-4 ml-3 col-form-label">Name</label>
                             <div class="col-md-11 ml-3">
-                              <input type="text" class="form-control mb-2" wire:model.defer="name" placeholder="Name">
+                              <input type="text" class="form-control @error('name') is-invalid @enderror" wire:model.defer="name" placeholder="Name">
                               @error('name')
                               <div class="text-danger">
                                   {{ $message }}
@@ -103,7 +103,7 @@
                         <div class="form-group row">
                             <label for="create-email" class="col-md-4 ml-3 col-form-label">Designation</label>
                             <div class="col-md-11 ml-3">
-                              <input type="text" class="form-control mb-4"  wire:model.defer="designation" placeholder="Designation">
+                              <input type="text" class="form-control @error('designation') is-invalid @enderror"  wire:model.defer="designation" placeholder="Designation">
                               @error('designation')
                               <div class="text-danger">
                                   {{ $message }}

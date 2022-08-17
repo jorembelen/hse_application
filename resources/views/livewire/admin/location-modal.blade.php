@@ -1,7 +1,7 @@
 
 {{-- Locations --}}
 
-    <!-- Edit modal content -->
+    <!-- Create modal content -->
     <div id="createLocation" class="modal fade" wire:ignore.self>
         <div class="modal-dialog">
             <div class="modal-content">
@@ -16,7 +16,7 @@
                         <div class="form-group row">
                             <label for="create-name" class="col-md-4 ml-3 col-form-label">Division</label>
                             <div class="col-md-11 ml-3">
-                              <input type="text" class="form-control mb-2" wire:model.defer="division"  placeholder="Division/Department">
+                              <input type="text" class="form-control @error('division') is-invalid @enderror" wire:model.defer="division"  placeholder="Division/Department">
                               @error('division')
                               <div class="text-danger">
                                   {{ $message }}
@@ -27,7 +27,7 @@
                         <div class="form-group row">
                             <label for="create-username" class="col-md-4 ml-3 col-form-label">Project Name</label>
                             <div class="col-md-11 ml-3">
-                              <input type="text" class="form-control mb-2" wire:model.defer="name" placeholder="Project Name">
+                              <input type="text" class="form-control @error('name') is-invalid @enderror" wire:model.defer="name" placeholder="Project Name">
                               @error('name')
                               <div class="text-danger">
                                   {{ $message }}
@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label for="create-email" class="col-md-4 ml-3 col-form-label">Location</label>
                             <div class="col-md-11 ml-3">
-                              <input type="text" class="form-control mb-4"  wire:model.defer="loc_name" placeholder="Location">
+                              <input type="text" class="form-control @error('loc_name') is-invalid @enderror"  wire:model.defer="loc_name" placeholder="Location">
                               @error('loc_name')
                               <div class="text-danger">
                                   {{ $message }}
@@ -71,7 +71,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Update ID No. {{ $locationId }} </h4>
+                    <h4 class="modal-title" id="myModalLabel">Update Location? </h4>
                     <button type="button" class="close" wire:click.prevent="close">×</button>
                 </div>
                 <div class="modal-body">
