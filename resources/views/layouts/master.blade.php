@@ -93,11 +93,6 @@
         });
     </script>
 
-    <script>
-        var ss = $(".basic").select2({
-            tags: true,
-        });
-    </script>
 
     <script src="{{ asset('assets/lightbox/photoswipe.min.js') }}"></script>
     <script src="{{ asset('assets/lightbox/photoswipe-ui-default.min.js') }}"></script>

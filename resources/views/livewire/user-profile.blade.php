@@ -107,7 +107,7 @@
                                 <div class="form-group row">
                                     <label for="create-email" class="col-md-4 ml-3 col-form-label">Confirm Password</label>
                                     <div class="col-md-11 ml-3">
-                                        <input type="{{ $showPass ? 'text' : 'password' }}" class="form-control"  wire:model.defer="password_confirmation" placeholder="confirm password">
+                                        <input type="{{ $showPass ? 'text' : 'password' }}"  class="form-control"  wire:model.defer="password_confirmation" placeholder="confirm password">
                                         @error('password_confirmation')
                                         <div class="text-danger">
                                             {{ $message }}
