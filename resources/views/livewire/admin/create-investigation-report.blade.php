@@ -2,7 +2,18 @@
 
 <div>
 
-    <div class="row">
+        {{-- This is for the Loading Spinner --}}
+        <div class="d-flex align-items-center mt-4">
+            <div class="container"  wire:loading wire:target="create">
+                <div class="row">
+                    <div class="col">
+                        <img src="{{ asset('assets/img/loading.gif') }}" alt="" class="d-block m-auto" height="150">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="row" wire:loading.remove wire:target="create">
         <div class="col-12 col-xl-12">
             <div class="card">
                 <div class="card-header">
@@ -467,9 +478,9 @@
 
                         </div>
                         <div class="modal-footer mt-4">
-                            <div wire:loading wire:target="create" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Processing . . .</div>
+                            {{-- <div wire:loading wire:target="create" class="progress-bar progress-bar-striped progress-bar-animated" role="status" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Processing . . .</div> --}}
 
-                            <div wire:loading.remove wire:target="create, proof, inc_img, docs">
+                            <div wire:loading.remove wire:target="proof, inc_img, docs">
                                 <button  class="btn btn-dark waves-effect waves-light" type="submit">Submit</button>
                                 <a href="{{ session()->has('previousRoute') ? url(session()->get('previousRoute')) : url()->previous() }}" type="button" class="btn btn-danger waves-effect">Cancel</a>
                             </div>
