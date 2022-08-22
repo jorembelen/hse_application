@@ -268,8 +268,8 @@ trait IncidentTraits {
         }
 
 
-        // Mail::to($email)->send(new InvestigationReportMail($report, $greetings));
-        // Mail::to($projectEmail)->send(new InvestigationReportMail($report, $greetings));
+        Mail::to($email)->send(new InvestigationReportMail($report, $greetings));
+        Mail::to($projectEmail)->send(new InvestigationReportMail($report, $greetings));
 
     }
 
