@@ -95,7 +95,7 @@ class InvestigationEdit extends Component
             'inc_loc' => 'required|max:255',
             'nature' => 'required|max:255',
             'other' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'details' => 'required|max:255',
             'aid' => 'required|max:255',
             'aider' => 'required_if:aid,Yes',
