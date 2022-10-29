@@ -19,9 +19,9 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                            <th>Division/Department</th>
-                                            <th>Project Name</th>
-                                            <th>Employee</th>
+                                            <th>Badge</th>
+                                            <th>Name</th>
+                                            <th>Designation</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
