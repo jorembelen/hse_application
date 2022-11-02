@@ -10,7 +10,7 @@
 
                 </div>
                 <div class="card-body">
-                    <table id="datatables-reponsive" class="table table-striped dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables-reponsive_info">
+                    <table id="datatables-buttons" class="table table-striped dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables-reponsive_info">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -20,7 +20,7 @@
                                 <th>WPS</th>
                                 <th>Severity</th>
                                 <th>Status</th>
-                                <th>Date & Time of Incident</th>
+                                <th>Date of Incident</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -50,7 +50,7 @@
 
 
                                 </td>
-                                <td>{{ date('Y-m-d h:i a', strtotime($incident->date)) }}</td>
+                                <td>{{ date('Y-m-d', strtotime($incident->date)) }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('print', $incident->id) }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-print"></i></a>
                                     @if($incident->status != 1)

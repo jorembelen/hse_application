@@ -12,7 +12,7 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <table id="datatables-reponsive" class="table table-striped dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables-reponsive_info">
+                    <table id="datatables-buttons" class="table table-striped dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables-reponsive_info">
                         <thead>
                             <tr>
                                 <th>ID</th>

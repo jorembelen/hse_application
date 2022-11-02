@@ -93,6 +93,18 @@
         });
     </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Datatables with Buttons
+        var datatablesButtons = $("#datatables-buttons").DataTable({
+            responsive: true,
+            lengthChange: !1,
+            buttons:'copy'
+        });
+        datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)");
+    });
+</script>
+
 
     <script src="{{ asset('assets/lightbox/photoswipe.min.js') }}"></script>
     <script src="{{ asset('assets/lightbox/photoswipe-ui-default.min.js') }}"></script>
