@@ -11,7 +11,7 @@
                             <div class="form-row">
                                 @if ($result == false)
                                 <div class="form-group col-md-3 sm-3">
-                                    <label for="">Filter By Category</label>
+                                    <label for="">Filter By Incident Type</label>
                                     <div wire:ignore>
                                         <select wire:model="type" class="form-control">
                                             <option value="{{ $type }}">Choose Type</option>
