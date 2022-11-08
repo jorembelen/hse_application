@@ -121,6 +121,7 @@
     @stack('comments-js')
     @stack('monthly-incidents-js')
     @stack('inc-type-js')
+    @stack('js')
 
     @livewireScripts
 </body>

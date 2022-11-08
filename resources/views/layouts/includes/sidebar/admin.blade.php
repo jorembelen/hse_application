@@ -20,6 +20,14 @@
                     <li class="sidebar-item {{ (request()->segment(1) == 'recommendations') ? 'active' : '' }}"><a class="sidebar-link" href="{{ route('admin.recommendation') }}">Recommendations</a></li>
                 </ul>
             </li>
+            <li class="sidebar-item {{ (in_array(request()->segment(1), ['admin-notification-reports'])) ? 'active' : '' }}">
+                <a href="#reports" data-toggle="collapse" class="sidebar-link">
+                    <i class="align-middle" data-feather="pie-chart"></i> <span class="align-middle">Reports</span>
+                </a>
+                <ul id="reports" class="sidebar-dropdown list-unstyled collapse {{ (in_array(request()->segment(1), ['admin-notification-reports'])) ? 'show' : '' }}" data-parent="#sidebar">
+                    <li class="sidebar-item {{ (in_array(request()->segment(1), ['admin-notification-reports'])) ? 'active' : '' }}"><a class="sidebar-link" href="{{ route('report.notifications') }}"> Notifications</a></li>
+                </ul>
+            </li>
             <li class="sidebar-item {{ (request()->segment(1) == 'reviews') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('reviews') }}">
                     <i class="align-middle" data-feather="feather"></i> <span class="align-middle">Reviews</span>

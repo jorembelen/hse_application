@@ -27,6 +27,7 @@ use App\Http\Livewire\Project\ProjectRecommendations;
 use App\Http\Livewire\Recommendation\PendingRecommendations;
 use App\Http\Livewire\Recommendation\RecommendationsList;
 use App\Http\Livewire\Recommendation\ReportsRecommendation;
+use App\Http\Livewire\Reports\NotificationsReport;
 use App\Http\Livewire\UserProfile;
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +81,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('admin-users-session', UserSessionsList::class)->name('admin.users-session');
         Route::get('/admin-incident-investigation', InvestigationsList::class)->name('admin.investigation');
         Route::get('/admin-incident-notifications', IncidentNotifications::class)->name('admin.incidents');
+
+        Route::get('admin-notification-reports', NotificationsReport::class)->name('report.notifications');
 
     });
 
