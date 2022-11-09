@@ -3,18 +3,21 @@
 namespace App\Http\Livewire\Reports;
 
 use App\Models\Incident;
+use App\Models\Location;
 use Livewire\Component;
 
 class NotificationsReport extends Component
 {
     public $result = false;
-    public $type, $start_date, $end_date, $status;
+    public $type, $start_date, $end_date, $status, $location;
     public $incidents = [];
 
     public function render()
     {
+        $incId = Incident::select('location')->distinct('location')->get()->toArray();
+        $locations = Location::select('id', 'name')->whereIn('id', $incId)->orderBy('name', 'ASC')->get();
 
-        return view('livewire.reports.notifications-report')->extends('layouts.master');
+        return view('livewire.reports.notifications-report', compact('locations'))->extends('layouts.master');
     }
 
     public function filter()
@@ -35,7 +38,10 @@ class NotificationsReport extends Component
 
         if($this->status) {
             $incidents =  $incidents->wherestatus($this->status);
-            // dd($status);
+        }
+
+        if($this->location) {
+            $incidents =  $incidents->wherelocation($this->location);
         }
 
         if($this->start_date) {
@@ -70,6 +76,7 @@ class NotificationsReport extends Component
         $this->end_date = null;
         $this->status = null;
         $this->incidents = null;
+        $this->location = null;
         $this->result = false;
         $this->dispatchBrowserEvent('reApplySelect2');
         $this->dispatchBrowserEvent('refreshDate', ['componentDate' => '#datepicker']);

@@ -11,6 +11,17 @@
                             <div class="form-row">
                                 @if ($result == false)
                                 <div class="form-group col-md-3 sm-3">
+                                    <label for="">Filter By Project Location</label>
+                                    <div wire:ignore>
+                                        <select wire:model="location" class="form-control">
+                                            <option value="{{ $location }}">Choose Location</option>
+                                            @foreach ($locations as $location)
+                                                <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 sm-3">
                                     <label for="">Filter By Incident Type</label>
                                     <div wire:ignore>
                                         <select wire:model="type" class="form-control">
@@ -27,7 +38,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-3 sm-3">
+                                <div class="form-group col-md-2 sm-2">
                                     <label for="">Start Date</label>
                                     <div wire:ignore>
                                         <input type="text" id="datepicker" wire:model.defer="start_date" class="form-control" value="{{ request('start_date') }}" placeholder="start date">
@@ -38,7 +49,7 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-3 sm-3">
+                                <div class="form-group col-md-2 sm-2">
                                     <label for="">End Date</label>
                                     <div wire:ignore>
                                         <input type="text" id="datepicker2" wire:model.defer="end_date" class="form-control" value="{{ request('end_date') }}" placeholder="end date">
@@ -49,7 +60,7 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-3 sm-3">
+                                <div class="form-group col-md-2 sm-2">
                                     <label for="">Filter By Status</label>
                                     <select wire:model.defer="status"  class="form-control">
                                         <option>Choose Status</option>
