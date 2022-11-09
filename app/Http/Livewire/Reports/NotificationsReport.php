@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Reports;
 
 use App\Models\Incident;
 use App\Models\Location;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class NotificationsReport extends Component
@@ -30,6 +31,9 @@ class NotificationsReport extends Component
         ]);
 
 
+        $startDate = Carbon::createFromFormat('Y-m-d', $this->start_date)->startOfDay();
+        $endDate = Carbon::createFromFormat('Y-m-d', $this->end_date)->endOfDay();
+
         $incidents = new Incident();
 
         if($this->type) {
@@ -45,11 +49,7 @@ class NotificationsReport extends Component
         }
 
         if($this->start_date) {
-            $incidents = $incidents->where('date', '>=', $this->start_date);
-        }
-
-        if($this->end_date) {
-            $incidents = $incidents->where('date', '<=', $this->end_date);
+            $incidents = $incidents->whereBetween('date',  [$startDate, $endDate]);
         }
 
         if($this->end_date < $this->start_date){
