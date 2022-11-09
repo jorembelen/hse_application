@@ -70,4 +70,11 @@ class Incident extends Model
         });
     }
 
+    public function scopeCreatedBetweenDates($query, array $dates)
+    {
+        return $query->whereDate('date', '>=', $dates[0])
+                ->whereDate('date', '<=', $dates[1]);
+    }
+
+
 }

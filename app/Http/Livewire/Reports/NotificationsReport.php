@@ -49,7 +49,7 @@ class NotificationsReport extends Component
         }
 
         if($this->start_date) {
-            $incidents = $incidents->whereBetween('date',  [$startDate, $endDate]);
+            $incidents = $incidents->createdBetweenDates([$startDate, $endDate]);
         }
 
         if($this->end_date < $this->start_date){
