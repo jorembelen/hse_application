@@ -69,7 +69,7 @@ class CreateIncidentNotifications extends Component
             'contractor' => 'required_if:sel_involved,NonEmployee',
             'cause' => 'required|max:255',
             'equipment' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'action' => 'required|max:255',
             'wps' => 'required|max:255',
             'severity' => 'required|max:255',
