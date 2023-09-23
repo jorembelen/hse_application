@@ -2,16 +2,16 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Http\Livewire\BaseComponent;
 use App\Mail\UserRegistrationMail;
 use App\Models\Location;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
 
-class UsersComponent extends Component
+class UsersComponent extends BaseComponent
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -37,7 +37,21 @@ class UsersComponent extends Component
 
     public function render()
     {
-        $users = User::search($this->query)->latest()->paginate(10);
+        $uRecords = new User();
+
+        // Base query
+        $query = $uRecords->orderBy($this->sortColumnName, $this->sortDirection);
+
+        // If a search query is provided, add it as a condition
+        if ($this->query) {
+            if(strlen($this->query) > 3) {
+                $query->search($this->query);
+            }
+        }
+
+        $total = $query->count();
+        $users = $query->paginate(10);
+
         $locations = Location::query()
             ->get(['id', 'name']);
 

@@ -119,14 +119,17 @@ class User extends Authenticatable
         }
     }
 
-    public static function search($search)
-    {
-        return empty($search) ? static::query()
-        : static::query()
-            ->where('username', 'like', '%'.$search.'%')
-            ->orWhere('name', 'like', '%'.$search.'%')
-            ->orWhere('role', 'like', '%'.$search.'%')
-            ->orWhere('email', 'like', '%'.$search.'%');
-    }
 
+    public function scopeSearch($query, $search)
+    {
+        if ($search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%')
+                    ->orWhere('username', 'like', '%'.$search.'%')
+                    ->orWhere('role', 'like', '%'.$search.'%')
+                    ->orWhere('email', 'like', '%'.$search.'%');
+            });
+        }
+        return $query;
+    }
 }

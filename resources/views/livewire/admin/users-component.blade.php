@@ -19,12 +19,22 @@
                         <thead>
                             <tr>
                                 <th>SN</th>
-                                <th>Name</th>
-                                <th>Username</th>
+                                <th>
+                                    <x-filter label="Name" model="name" name="sortColumnName" direction="sortDirection"></x-filter>
+                                </th>
+                                <th>
+                                    <x-filter label="UserName" model="username" name="sortColumnName" direction="sortDirection"></x-filter>
+                                </th>
                                 <th>Email</th>
-                                <th>Role</th>
-                                <th>Location</th>
-                                <th>Status</th>
+                                <th>
+                                    <x-filter label="Role" model="role" name="sortColumnName" direction="sortDirection"></x-filter>
+                                </th>
+                                <th>
+                                    <x-filter label="Location" model="location_id" name="sortColumnName" direction="sortDirection"></x-filter>
+                                </th>
+                                <th>
+                                    <x-filter label="Status" model="status" name="sortColumnName" direction="sortDirection"></x-filter>
+                                </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
