@@ -408,7 +408,9 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="safety">Safety Awareness Training Date<span class="text-danger"> </span></label>
-                                <input type="text" id="date" class="form-control flatpickr flatpickr-input active" wire:model.defer="safety" placeholder="Safety Awareness Training Date">
+                                <div wire:ignore>
+                                    <input type="text" id="date" class="form-control flatpickr flatpickr-input active" wire:model.defer="safety" placeholder="Safety Awareness Training Date">
+                                </div>
                                 @error('safety')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -505,7 +507,7 @@
     var secondUpload = new FileUploadWithPreview('mySecondImage')
 </script>
 <script>
-    var f2 = flatpickr(document.getElementById('date'), {
+    flatpickr(document.getElementById('date'), {
         enableTime: false,
         dateFormat: "Y-m-d",
     });

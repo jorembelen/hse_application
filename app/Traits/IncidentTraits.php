@@ -7,7 +7,7 @@ use App\Mail\InvestigationReportMail;
 use App\Models\Incident;
 use App\Models\Report;
 use App\Models\RootCause;
-use App\Models\User;
+use App\Services\GreetingService;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -72,29 +72,18 @@ trait IncidentTraits {
             // get the name of the image
             $name = $doc->hashName();
             $docsPath = 'files/documents/' .$name;
-            // $path = $data['docs']->store($docsPath);
             Storage::disk('s3')->put($docsPath, file_get_contents($doc->getRealPath()));
             $data['docs'] = $name;
         }
 
-        $email = User::whererole('super_admin')
-        ->orWhere('role', '=', 'admin')
-        ->get();
-        $projectEmail = User::wherelocation_id($data['location'])->get();
-
-        $greetings = "";
-        $hour = date('H');
-        if ($hour >= 18) {
-            $greetings = "Good Evening,";
-        } elseif ($hour >= 12) {
-            $greetings = "Good Afternoon,";
-        } elseif ($hour < 12) {
-            $greetings = "Good Morning,";
-        }
-
         $incident = $incidents->create($data);
+    
+        $email = (new GreetingService())->getUserEmails($data['location']);
+        $greetings = (new GreetingService())->getGreeting();
+
+        //Send notification
         Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
-        Mail::to($projectEmail)->send(new IncidentReportMail($incident, $greetings));
+
     }
 
     public function editIncident($data)
@@ -252,31 +241,17 @@ trait IncidentTraits {
 
         }
 
-        $email = User::whererole('super_admin')
-        ->orWhere('role', '=', 'admin')
-        ->get();
-        $projectEmail = User::wherelocation_id($data['location_id'])->get();
-
-        $greetings = "";
-        $hour = date('H');
-        if ($hour >= 18) {
-            $greetings = "Good Evening,";
-        } elseif ($hour >= 12) {
-            $greetings = "Good Afternoon,";
-        } elseif ($hour < 12) {
-            $greetings = "Good Morning,";
-        }
-
+        $email = (new GreetingService())->getUserEmails($data['location_id']);
+        $greetings = (new GreetingService())->getGreeting();
 
         Mail::to($email)->send(new InvestigationReportMail($report, $greetings));
-        Mail::to($projectEmail)->send(new InvestigationReportMail($report, $greetings));
 
     }
 
     public function editInvestigation($data)
     {
         $report = Report::find($data['id']);
-        // dd($data);
+    
         $proofImgs=array();
         if($data['hasProof'] === 1){
             $proofs = explode("|", $report->proof);
