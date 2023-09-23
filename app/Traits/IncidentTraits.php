@@ -7,6 +7,7 @@ use App\Mail\InvestigationReportMail;
 use App\Models\Incident;
 use App\Models\Report;
 use App\Models\RootCause;
+use App\Models\User;
 use App\Services\GreetingService;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -78,9 +79,10 @@ trait IncidentTraits {
 
         $incident = $incidents->create($data);
     
-        $email = (new GreetingService())->getUserEmails($data['location']);
+        $email = User::whereEmail('rcl.support@rezayat.net')->get()->pluck('email');
+        // $email = (new GreetingService())->getUserEmails($data['location']);
         $greetings = (new GreetingService())->getGreeting();
-        dd('here');
+
         //Send notification
         Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
 
