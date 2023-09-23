@@ -80,7 +80,7 @@ trait IncidentTraits {
     
         $email = (new GreetingService())->getUserEmails($data['location']);
         $greetings = (new GreetingService())->getGreeting();
-
+        dd('here');
         //Send notification
         Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
 
