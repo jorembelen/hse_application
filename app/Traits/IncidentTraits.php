@@ -2,8 +2,6 @@
 
 namespace App\Traits;
 
-use App\Jobs\SendEmailJob;
-use App\Jobs\SendEmailQueueJob;
 use App\Mail\IncidentReportMail;
 use App\Mail\InvestigationReportMail;
 use App\Models\Incident;
@@ -82,14 +80,11 @@ trait IncidentTraits {
         $incident = $incidents->create($data);
     
         // $email = User::whereEmail('rcl.support@rezayat.net')->get()->pluck('email');
-        // dd($email);
         $email = (new GreetingService())->getUserEmails($data['location']);
         $greetings = (new GreetingService())->getGreeting();
 
         //Send notification
         Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
-        // dispatch(new SendEmailQueueJob($email));
-     
 
     }
 
