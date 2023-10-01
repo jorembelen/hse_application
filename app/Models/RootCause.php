@@ -25,13 +25,17 @@ class RootCause extends Model
         return $this->belongsTo(Report::class);
     }
 
-    public static function search($search)
+
+    public function scopeSearch($query, $search)
     {
-        return empty($search) ? static::query()
-        : static::query()
-            ->where('incident_id', 'like', '%'.$search.'%')
-            ->orWhere('type', 'like', '%'.$search.'%')
-            ->orWhere('rec_type', 'like', '%'.$search.'%');
+        if ($search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('incident_id', 'like', '%'.$search.'%')
+                ->orWhere('type', 'like', '%'.$search.'%')
+                ->orWhere('rec_type', 'like', '%'.$search.'%');
+            });
+        }
+        return $query;
     }
 
 }

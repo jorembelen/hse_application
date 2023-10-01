@@ -20,14 +20,17 @@ class Location extends Model
         return $this->hasMany(Incident::class, 'location');
     }
 
-    public static function search($search)
-    {
-        return empty($search) ? static::query()
-        : static::query()
-            ->where('division', 'like', '%'.$search.'%')
-            ->orWhere('name', 'like', '%'.$search.'%')
-            ->orWhere('loc_name', 'like', '%'.$search.'%');
-    }
 
+    public function scopeSearch($query, $search)
+    {
+        if ($search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%')
+                ->orWhere('division', 'like', '%'.$search.'%')
+                ->orWhere('loc_name', 'like', '%'.$search.'%');
+            });
+        }
+        return $query;
+    }
 
 }

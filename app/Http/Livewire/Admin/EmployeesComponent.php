@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Http\Livewire\BaseComponent;
 use App\Models\Employee;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use Livewire\WithPagination;
 
-class EmployeesComponent extends Component
+class EmployeesComponent extends BaseComponent
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -28,9 +28,22 @@ class EmployeesComponent extends Component
 
     public function render()
     {
-        $employees = Employee::search($this->query)->latest()->paginate(10);
+        $records = new Employee();
 
-        return view('livewire.admin.employees-component', compact('employees'))->extends('layouts.master');
+        // Base query
+        $query = $records->orderBy($this->sortColumnName, $this->sortDirection);
+
+        // If a search query is provided, add it as a condition
+        if ($this->query) {
+            if(strlen($this->query) > 3) {
+                $query->search($this->query);
+            }
+        }
+
+        $total = $query->count();
+        $employees = $query->paginate(10);
+
+        return view('livewire.admin.employees-component', compact('employees', 'total'))->extends('layouts.master');
     }
 
     public function close()

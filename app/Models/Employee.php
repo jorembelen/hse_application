@@ -20,12 +20,16 @@ class Employee extends Model
         return $this->hasMany(Incident::class);
     }
 
-    public static function search($search)
+    public function scopeSearch($query, $search)
     {
-        return empty($search) ? static::query()
-        : static::query()
-            ->where('badge', 'like', '%'.$search.'%')
-            ->orWhere('name', 'like', '%'.$search.'%')
-            ->orWhere('designation', 'like', '%'.$search.'%');
+        if ($search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%')
+                ->orWhere('badge', 'like', '%'.$search.'%')
+                ->orWhere('designation', 'like', '%'.$search.'%');
+            });
+        }
+        return $query;
     }
+
 }

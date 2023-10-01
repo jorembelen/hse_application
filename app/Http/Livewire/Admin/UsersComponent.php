@@ -55,7 +55,7 @@ class UsersComponent extends BaseComponent
         $locations = Location::query()
             ->get(['id', 'name']);
 
-        return view('livewire.admin.users-component', compact('users', 'locations'))->extends('layouts.master');
+        return view('livewire.admin.users-component', compact('users', 'locations', 'total'))->extends('layouts.master');
     }
 
     public function activate(User $user)

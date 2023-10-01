@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-header">
-                        <a class="btn btn-dark float-right" role="button" href="#" wire:click.prevent="showCreate"><i class="fas fa-plus-circle"></i> Add</a>
+                        <x-c-header name="Total Locations: {{ number_format($total,) }}"></x-c-header>
                     </div>
                 </div>
                 <div class="card-body table-responsive">
@@ -20,8 +20,8 @@
                             <tr>
                                 <th>ID</th>
                                             <th>Division/Department</th>
-                                            <th>Project Name</th>
-                                            <th>Location</th>
+                                            <th><x-filter label="Project Name" model="name" name="sortColumnName" direction="sortDirection"></x-filter></th>
+                                            <th><x-filter label="Location" model="loc_name" name="sortColumnName" direction="sortDirection"></x-filter></th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>

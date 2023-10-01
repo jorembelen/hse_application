@@ -7,10 +7,17 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ session()->has('previousRoute') ? url(session()->get('previousRoute')) : url()->previous() }}" type="button"class="btn btn-dark mb-2 float-right">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
-                        Back
-                    </a>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Total Records: {{ $total }}</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{ session()->has('previousRoute') ? url(session()->get('previousRoute')) : url()->previous() }}" type="button"class="btn btn-dark mb-2 float-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+                                Back
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="card-body table-responsive">
@@ -21,12 +28,12 @@
                         <thead>
                             <tr>
                                 <th>SN</th>
-                                <th>Notification ID</th>
-                                <th>Investigation ID</th>
+                                <th><x-filter label="Notification ID" model="incident_id" name="sortColumnName" direction="sortDirection"></x-filter></th>
+                                <th><x-filter label="Investigation ID" model="report_id" name="sortColumnName" direction="sortDirection"></x-filter></th>
                                 <th>Root Cause</th>
-                                <th>Type</th>
+                                <th><x-filter label="Type" model="type" name="sortColumnName" direction="sortDirection"></x-filter></th>
                                 <th>recommendation</th>
-                                <th>Type</th>
+                                <th><x-filter label="Type" model="rec_type" name="sortColumnName" direction="sortDirection"></x-filter></th>
                                 <th>Status</th>
                                 @if(auth()->user()->role == 'user' || auth()->user()->role == 'super_admin' || auth()->user()->role == 'admin')
                                 <th>Action</th>

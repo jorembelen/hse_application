@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\Recommendation;
 
+use App\Http\Livewire\BaseComponent;
 use App\Models\RootCause;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use Livewire\WithPagination;
 
-class RecommendationsList extends Component
+class RecommendationsList extends BaseComponent
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -23,10 +23,24 @@ class RecommendationsList extends Component
 
     public function render()
     {
-        $cause = RootCause::search($this->query)->latest()->paginate(10);
+        $records = new RootCause();
+
+        // Base query
+        $query = $records->orderBy($this->sortColumnName, $this->sortDirection);
+
+        // If a search query is provided, add it as a condition
+        if ($this->query) {
+            if(strlen($this->query) > 3) {
+                $query->search($this->query);
+            }
+        }
+
+        $total = $query->count();
+        $cause = $query->paginate(10);
+
         session()->put('previousRoute', url()->previous());
 
-        return view('livewire.recommendation.recommendations-list', compact('cause'))->extends('layouts.master');
+        return view('livewire.recommendation.recommendations-list', compact('cause', 'total'))->extends('layouts.master');
     }
 
     public function close()

@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-header">
-                        <a class="btn btn-dark float-right" href="#" wire:click.prevent="showCreate"><i class="fas fa-plus-circle"></i> Add</a>
+                        <x-c-header name="Total Employees: {{ number_format($total,) }}"></x-c-header>
                     </div>
                 </div>
                 <div class="card-body table-responsive">
@@ -21,7 +21,7 @@
                                 <th>ID</th>
                                             <th>Badge</th>
                                             <th>Name</th>
-                                            <th>Designation</th>
+                                            <th><x-filter label="Designation" model="designation" name="sortColumnName" direction="sortDirection"></x-filter></th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>

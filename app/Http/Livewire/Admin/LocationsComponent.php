@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Http\Livewire\BaseComponent;
 use App\Models\Location;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use Livewire\WithPagination;
 
-class LocationsComponent extends Component
+class LocationsComponent extends BaseComponent
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -27,10 +27,24 @@ class LocationsComponent extends Component
 
     public function render()
     {
-        $locations = Location::search($this->query)->latest()->paginate(10);
+        $records = new Location();
+
+        // Base query
+        $query = $records->orderBy($this->sortColumnName, $this->sortDirection);
+
+        // If a search query is provided, add it as a condition
+        if ($this->query) {
+            if(strlen($this->query) > 3) {
+                $query->search($this->query);
+            }
+        }
+
+        $total = $query->count();
+        $locations = $query->paginate(10);
+
         session()->put('previousRoute', url()->previous());
 
-        return view('livewire.admin.locations-component', compact('locations'))->extends('layouts.master');
+        return view('livewire.admin.locations-component', compact('locations', 'total'))->extends('layouts.master');
     }
 
     public function close()
