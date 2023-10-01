@@ -81,9 +81,9 @@ trait IncidentTraits {
 
         $incident = $incidents->create($data);
     
-        $email = User::whereEmail('rcl.support@rezayat.net')->get()->pluck('email');
+        // $email = User::whereEmail('rcl.support@rezayat.net')->get()->pluck('email');
         // dd($email);
-        // $email = (new GreetingService())->getUserEmails($data['location']);
+        $email = (new GreetingService())->getUserEmails($data['location']);
         $greetings = (new GreetingService())->getGreeting();
 
         //Send notification

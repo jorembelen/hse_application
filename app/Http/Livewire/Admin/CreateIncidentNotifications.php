@@ -108,7 +108,7 @@ class CreateIncidentNotifications extends Component
             $data['hasImages'] = $this->hasImages;
             $data['hasDocs'] = $this->hasDocs;
             $incidents->addIncident($data);
-            dd('success');
+         
             DB::commit();
 
             $this->dispatchBrowserEvent('swal:modal', [
