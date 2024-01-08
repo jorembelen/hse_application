@@ -79,8 +79,9 @@ trait IncidentTraits {
 
         $incident = $incidents->create($data);
     
-        // $email = User::whereEmail('rcl.support@rezayat.net')->get()->pluck('email');
-        $email = (new GreetingService())->getUserEmails($data['location']);
+        $incident['logo'] = asset('assets/img/logo.png');
+        $email = User::whereEmail('rcl.support@rezayat.net')->get()->pluck('email');
+        // $email = (new GreetingService())->getUserEmails($data['location']);
         $greetings = (new GreetingService())->getGreeting();
 
         //Send notification
@@ -243,7 +244,9 @@ trait IncidentTraits {
 
         }
 
-        $email = (new GreetingService())->getUserEmails($data['location_id']);
+        $report['logo'] = asset('assets/img/logo.png');
+           $email = User::whereEmail('rcl.support@rezayat.net')->get()->pluck('email');
+        // $email = (new GreetingService())->getUserEmails($data['location_id']);
         $greetings = (new GreetingService())->getGreeting();
 
         Mail::to($email)->send(new InvestigationReportMail($report, $greetings));

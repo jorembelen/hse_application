@@ -164,6 +164,8 @@ class UsersComponent extends BaseComponent
             $data['location_id'] = $this->location_id ? $this->location_id : null;
             // dd($data);
             $user = User::create($data);
+            $user['logo'] = asset('assets/img/logo.png');
+            // $email = 'rcl.support@rezayat.net';
             DB::commit();
             Mail::to($user->email)->send(new UserRegistrationMail($user, $password));
             $this->dispatchBrowserEvent('swal:modal', [
