@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         $photos = explode('|', $incident->images);
 
-        $pdf = PDF::loadView('print.incidents',compact('incident', 'photos'));
+        $pdf = PDF::loadView('print.incidents',compact('incident', 'photos'))->setOptions(['defaultFont' => 'poppins']);
         return $pdf->stream('reports.pdf');
     }
 
