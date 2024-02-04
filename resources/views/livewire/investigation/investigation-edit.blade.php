@@ -450,7 +450,7 @@
                             <div class="form-group col-md-6" >
                                 <div class="form-group custom-file-container" data-upload-id="secondImage">
                                     <div wire:ignore>
-                                    <label>Proof of Training (Attach image) <a href="#" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                                    <label>Incident Images (Attach image) <a href="#" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                                     <label class="custom-file-container__custom-file" >
                                         <input type="file" class=" form-control" wire:model="inc_img"  multiple>
                                         <span class="custom-file-container__custom-file__custom-file-control"></span>
