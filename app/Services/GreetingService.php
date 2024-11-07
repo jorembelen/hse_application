@@ -24,7 +24,6 @@ class GreetingService
 
     public function getUserEmails($locationId) 
     {
-        dd('here');
         $email = User::whereIn('role', ['super_admin', 'admin'])
         ->whereStatus(1)
         ->orWhere('location_id', $locationId)
