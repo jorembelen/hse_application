@@ -28,11 +28,13 @@ Notification Report {{ $report->incident_id }} was closed. <br><br>
     </tbody>
 </table>
 
-{{-- Notification Report {{ $report->incident_id }} was closed. <br><br>
-Investigation ID: {{ $report->id }} <br><br>
-Project Location: {{ $report->location->name }} <br> --}}
+@php
+$domainUrl = config('app.domain_url');
+$url = "$domainUrl/investigation/{$report->id}/details";
+@endphp
 
-@component('mail::button', ['url' => route('print.report-details', $report->id)])
+@component('mail::button', ['url' => $url])
+{{-- @component('mail::button', ['url' => route('print.report-details', $report->id)]) --}}
 View Details
 @endcomponent
 

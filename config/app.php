@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'domain_url' => 'http://143.198.195.159:81',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

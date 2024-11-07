@@ -31,7 +31,13 @@ New Notification Report was added to the site. <br>
 {{-- Type of Incident: <strong>{{ $incident->type }}</strong> <br>
 Project Location: <strong>{{ $incident->locations->name }}</strong> <br> --}}
 
-@component('mail::button', ['url' => route('print.incident', $incident->id)])
+@php
+$domainUrl = config('app.domain_url');
+$url = "$domainUrl/incident/{$incident->id}/details";
+@endphp
+
+@component('mail::button', ['url' => $url])
+{{-- @component('mail::button', ['url' => route('print.incident', $incident->id)]) --}}
 View Details
 @endcomponent
 
