@@ -90,10 +90,10 @@ class User extends Authenticatable
             return  Storage::disk('s3')->url('files/avatar/'.$this->profile_pic);
     }
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = bcrypt($value);
+    // }
 
     public function hasLocation()
     {

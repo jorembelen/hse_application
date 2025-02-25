@@ -160,7 +160,7 @@ class UsersComponent extends BaseComponent
             $password = substr(str_shuffle(str_repeat($data_pool, 8)), 0, 8);
             $data['username'] = Str::lower($this->username);
             $data['email'] = Str::lower($this->email);
-            $data['password'] = $password;
+            $data['password'] = bcrypt($password);
             $data['location_id'] = $this->location_id ? $this->location_id : null;
             // dd($data);
             $user = User::create($data);

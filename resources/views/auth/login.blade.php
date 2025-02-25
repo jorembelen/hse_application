@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>HSE APP Login Page</title>
-    {{-- <link rel="icon" type="image/x-icon" href="/admin/assets/img/rcl.ico"/> --}}
+    <link rel="shortcut icon" href="{{ asset('assets/img/rcl.ico') }}">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="/admin/https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
     <link href="/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,9 @@
             <div class="form-form-wrap">
                 <div class="form-container">
                     <div class="form-content">
-
+                        <span class="logo-sm">
+                            <img src="{{ asset('assets/img/logo.png') }}" alt="" height="80">
+                        </span>
                         <h1 class="">HSE APP</h1>
                         <p class="">Log in to your account to continue.</p>
                         @if (session()->has('error'))
@@ -69,6 +71,17 @@
                                     </span>
                                     @endif
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="field-wrapper text-right keep-logged-in mt-3">
+                                            <label class="new-control  checkbox-outline-primary">
+                                                <a href="{{ Route('password.request') }}"><span class="new-control-indicator"></span>Forgot Password?</a>
+                                            </label>
+                                        </div>
+                
+                                    </div>
+                                </div>
+
                                 <div class="d-sm-flex justify-content-between">
                                     <div class="field-wrapper">
                                         <button type="submit" class="btn btn-primary" value="">Log In</button>
