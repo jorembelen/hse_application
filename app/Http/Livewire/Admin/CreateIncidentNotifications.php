@@ -70,7 +70,7 @@ class CreateIncidentNotifications extends Component
             'cause' => 'required|max:255',
             'equipment' => 'required|max:255',
             'description' => 'required',
-            'action' => 'required|max:255',
+            'action' => 'required',
             'wps' => 'required|max:255',
             'severity' => 'required|max:255',
             'date' => 'required',
