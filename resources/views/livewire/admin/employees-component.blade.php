@@ -29,7 +29,7 @@
                                             @foreach ($employees as $employee)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $employee->badge }}</td>
+                                            <td>{{ $employee->id }}</td>
                                             <td>{{ $employee->name }}</td>
                                             <td>{{ $employee->designation }}</td>
                                             <td class="text-center">
