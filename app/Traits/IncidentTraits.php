@@ -85,7 +85,7 @@ trait IncidentTraits {
         $greetings = (new GreetingService())->getGreeting();
 
         //Send notification
-        // Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
+        Mail::to($email)->send(new IncidentReportMail($incident, $greetings));
 
     }
 
